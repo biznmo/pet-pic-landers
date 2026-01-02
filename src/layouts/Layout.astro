@@ -1,0 +1,80 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Transform your pet photo into stunning AI art. Museum-quality portraits printed and shipped to your door." } = Astro.props;
+const mainSiteUrl = "https://petpicportraits.com";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body class="bg-black text-white min-h-screen">
+    <slot />
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-12 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-gray-500 mb-6">
+          &copy; 2025 Pet Pic Portraits. All Rights Reserved.
+        </p>
+
+        <!-- Quick Links -->
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-8 text-sm">
+          <a href={`${mainSiteUrl}/how-it-works`} class="text-amber-400 hover:text-amber-300 transition-colors">
+            How It Works
+          </a>
+          <a href={`${mainSiteUrl}/privacy`} class="text-amber-400 hover:text-amber-300 transition-colors">
+            Privacy Policy
+          </a>
+          <a href={`${mainSiteUrl}/terms`} class="text-amber-400 hover:text-amber-300 transition-colors">
+            Terms of Service
+          </a>
+          <a href={`${mainSiteUrl}/refund`} class="text-amber-400 hover:text-amber-300 transition-colors">
+            Return Policy
+          </a>
+          <a href={`${mainSiteUrl}/shipping`} class="text-amber-400 hover:text-amber-300 transition-colors">
+            Shipping Policy
+          </a>
+          <a href="mailto:support@petpicportraits.com" class="text-amber-400 hover:text-amber-300 transition-colors">
+            Support
+          </a>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="text-gray-500 text-sm space-y-2">
+          <p>
+            <a href="mailto:support@petpicportraits.com" class="hover:text-amber-400 transition-colors">support@petpicportraits.com</a>
+            <span class="mx-2">|</span>
+            <a href="tel:888-897-5652" class="hover:text-amber-400 transition-colors">888-897-5652</a>
+          </p>
+          <div class="mt-4 text-gray-600">
+            <p>PetPicPortraits.com</p>
+            <p>BiznMotion LLC</p>
+            <p>100 S Ashley Dr, Suite 600</p>
+            <p>Tampa, FL 33602</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
